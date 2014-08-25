@@ -27,8 +27,6 @@
 		51BB975B19ABDC6C005E7F04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */; };
 		51BB975D19ABDC71005E7F04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975C19ABDC71005E7F04 /* Security.framework */; };
 		51BB975F19ABDCFF005E7F04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */; };
-		51BB976119ABDF20005E7F04 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976019ABDF20005E7F04 /* GoogleMaps.framework */; };
-		51BB976319ABDF39005E7F04 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976219ABDF39005E7F04 /* GoogleMaps */; };
 		51BB976519ABDF5E005E7F04 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976419ABDF5E005E7F04 /* AVFoundation.framework */; };
 		51BB976719ABDF63005E7F04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976619ABDF63005E7F04 /* CoreData.framework */; };
 		51BB976919ABDF68005E7F04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976819ABDF68005E7F04 /* CoreLocation.framework */; };
@@ -42,6 +40,9 @@
 		51BB977919ABDF92005E7F04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */; };
 		51BB977B19ABE101005E7F04 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977A19ABE101005E7F04 /* Accounts.framework */; };
 		51BB977D19ABE105005E7F04 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977C19ABE105005E7F04 /* Social.framework */; };
+		51BB977F19ABE784005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */; };
+		51BB978B19ABE9E6005E7F04 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */; };
+		51BB978D19ABE9F1005E7F04 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +81,6 @@
 		51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		51BB975C19ABDC71005E7F04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		51BB976019ABDF20005E7F04 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		51BB976219ABDF39005E7F04 /* GoogleMaps */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = GoogleMaps; path = GoogleMaps.framework/GoogleMaps; sourceTree = "<group>"; };
 		51BB976419ABDF5E005E7F04 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		51BB976619ABDF63005E7F04 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		51BB976819ABDF68005E7F04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -95,6 +94,9 @@
 		51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		51BB977A19ABE101005E7F04 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		51BB977C19ABE105005E7F04 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseSimpleLogin.framework; path = ../../Downloads/FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
+		51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,16 +117,16 @@
 				51BB976919ABDF68005E7F04 /* CoreLocation.framework in Frameworks */,
 				51BB976719ABDF63005E7F04 /* CoreData.framework in Frameworks */,
 				51BB976519ABDF5E005E7F04 /* AVFoundation.framework in Frameworks */,
+				51BB977F19ABE784005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */,
 				51BB975D19ABDC71005E7F04 /* Security.framework in Frameworks */,
 				51BB975B19ABDC6C005E7F04 /* CFNetwork.framework in Frameworks */,
-				51BB976319ABDF39005E7F04 /* GoogleMaps in Frameworks */,
 				51BB975919ABDC65005E7F04 /* libicucore.dylib in Frameworks */,
 				51BB970F19ABDA22005E7F04 /* CoreGraphics.framework in Frameworks */,
 				51BB971119ABDA22005E7F04 /* UIKit.framework in Frameworks */,
 				51BB975F19ABDCFF005E7F04 /* FacebookSDK.framework in Frameworks */,
-				51BB976119ABDF20005E7F04 /* GoogleMaps.framework in Frameworks */,
 				51BB970D19ABDA22005E7F04 /* Foundation.framework in Frameworks */,
 				51BB975719ABDC2D005E7F04 /* Firebase.framework in Frameworks */,
+				51BB978B19ABE9E6005E7F04 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +165,9 @@
 		51BB970B19ABDA22005E7F04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */,
+				51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */,
+				51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */,
 				51BB977C19ABE105005E7F04 /* Social.framework */,
 				51BB977A19ABE101005E7F04 /* Accounts.framework */,
 				51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */,
@@ -176,8 +181,6 @@
 				51BB976819ABDF68005E7F04 /* CoreLocation.framework */,
 				51BB976619ABDF63005E7F04 /* CoreData.framework */,
 				51BB976419ABDF5E005E7F04 /* AVFoundation.framework */,
-				51BB976219ABDF39005E7F04 /* GoogleMaps */,
-				51BB976019ABDF20005E7F04 /* GoogleMaps.framework */,
 				51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */,
 				51BB975C19ABDC71005E7F04 /* Security.framework */,
 				51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */,
@@ -315,6 +318,7 @@
 				51BB972819ABDA22005E7F04 /* Images.xcassets in Resources */,
 				51BB972019ABDA22005E7F04 /* Main_iPhone.storyboard in Resources */,
 				51BB971719ABDA22005E7F04 /* InfoPlist.strings in Resources */,
+				51BB978D19ABE9F1005E7F04 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

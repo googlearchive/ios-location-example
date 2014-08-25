@@ -7,29 +7,97 @@
 //
 
 #import "AppDelegate.h"
+
 #import <GoogleMaps/GoogleMaps.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <Firebase/Firebase.h>
+#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    CLLocationManager *locationManager_;
+    NSString *displayName_;
+}
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    
     // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    
+    if (wasHandled) {
+        [self authToFirebase];
+    }
     // You can add your app-specific url handling code here if needed
     return wasHandled;
+}
+
+- (void)authToFirebase
+{
+    NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    // if we have an access token, authenticate to firebase
+    if (fbAccessToken) {
+        Firebase *ref = [[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"];
+        FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
+        [authClient loginWithFacebookWithAccessToken:fbAccessToken withCompletionBlock:^(NSError *error, FAUser *user) {
+            if (error) {
+                NSLog(@"Error on login: %@", error);
+                [self stopLocationUpdates];
+            } else {
+                displayName_ = user.thirdPartyUserData[@"displayName"];
+                NSLog(@"Logged In: %@", displayName_);
+                [self startLocationUpdates];
+            }
+        }];
+    } else {
+        NSLog(@"No access token provided.");
+    }
+}
+
+- (void)startLocationUpdates
+{
+    // Create the location manager if this object does not
+    // already have one.
+    if (!locationManager_) {
+        locationManager_ = [[CLLocationManager alloc] init];
+    }
+    
+    locationManager_.delegate = self;
+    locationManager_.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    // Set a movement threshold for new events.
+    locationManager_.distanceFilter = 5; // meters
+    
+    [locationManager_ startUpdatingLocation];
+}
+
+- (void)stopLocationUpdates
+{
+    if (locationManager_) {
+        [locationManager_ stopUpdatingLocation];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *loc = locations[0];
+    if (displayName_) {
+        NSDictionary *value = @{
+            @"coords": @{
+                    @"accuracy" : [NSNumber numberWithDouble:loc.horizontalAccuracy],
+                    @"latitude" : [NSNumber numberWithDouble:loc.coordinate.latitude],
+                    @"longitude" : [NSNumber numberWithDouble:loc.coordinate.longitude]
+            },
+            @"timestamp" : [NSNumber numberWithInt:[[NSNumber numberWithDouble:loc.timestamp.timeIntervalSince1970 * 1000] intValue]]
+        };
+        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:displayName_];
+        [positionRef setValue:value];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [FBLoginView class];
-    // Override point for customization after application launch.
     [GMSServices provideAPIKey:@"AIzaSyBx8n37AY9pJw9AV6aOkrSKN84V22LrcUc"];
+    [self authToFirebase];
     return YES;
 }
 							
