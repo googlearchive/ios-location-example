@@ -40,6 +40,8 @@
 		51BB977519ABDF86005E7F04 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977419ABDF86005E7F04 /* OpenGLES.framework */; };
 		51BB977719ABDF8C005E7F04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977619ABDF8C005E7F04 /* QuartzCore.framework */; };
 		51BB977919ABDF92005E7F04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */; };
+		51BB977B19ABE101005E7F04 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977A19ABE101005E7F04 /* Accounts.framework */; };
+		51BB977D19ABE105005E7F04 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977C19ABE105005E7F04 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		51BB977419ABDF86005E7F04 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		51BB977619ABDF8C005E7F04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		51BB977A19ABE101005E7F04 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		51BB977C19ABE105005E7F04 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BB977D19ABE105005E7F04 /* Social.framework in Frameworks */,
+				51BB977B19ABE101005E7F04 /* Accounts.framework in Frameworks */,
 				51BB977919ABDF92005E7F04 /* SystemConfiguration.framework in Frameworks */,
 				51BB977719ABDF8C005E7F04 /* QuartzCore.framework in Frameworks */,
 				51BB977519ABDF86005E7F04 /* OpenGLES.framework in Frameworks */,
@@ -157,6 +163,8 @@
 		51BB970B19ABDA22005E7F04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BB977C19ABE105005E7F04 /* Social.framework */,
+				51BB977A19ABE101005E7F04 /* Accounts.framework */,
 				51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */,
 				51BB977619ABDF8C005E7F04 /* QuartzCore.framework */,
 				51BB977419ABDF86005E7F04 /* OpenGLES.framework */,
