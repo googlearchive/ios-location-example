@@ -1,6 +1,8 @@
 location-demo
 =============
+This is an example iOS app that will show you how to integrate the Firebase iOS SDK, Firebase Simple Login iOS SDK, Google Maps iOS SDK, and the Facebook iOS SDK.
 
+![Example](https://s3.amazonaws.com/uploads.hipchat.com/60341/715816/4uSm8E7qQVgmcFN/upload.png)
 #Setup
 ##Installing Frameworks
 1. [Firebase SDK](https://cdn.firebase.com/ObjC/Firebase.framework-1.1.12.zip)
