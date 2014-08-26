@@ -11,6 +11,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
+- (void)authToFirebase;
+- (void)deauthToFirebase;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @end

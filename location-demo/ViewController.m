@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
+
 #import <Firebase/Firebase.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <GoogleMaps/GoogleMaps.h>
@@ -44,6 +46,7 @@
 - (void)loadFacebookView {
 	// Do any additional setup after loading the view, typically from a nib.
     FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.delegate = self;
     [self.view addSubview:loginView];
 }
 
@@ -52,9 +55,7 @@
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"];
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *s2) {
         // a new person connected, start listening for his position
-        NSLog(@"Got new user %@", s2.name);
         [[ref childByAppendingPath:s2.name] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSLog(@"Got new position for user %@", snapshot.name);
             GMSMarker *marker = [usersToMarkers_ objectForKey:snapshot.name];
             if (!marker) {
                 marker = [[GMSMarker alloc] init];
@@ -65,6 +66,13 @@
             marker.position = CLLocationCoordinate2DMake([snapshot.value[@"coords"][@"latitude"] doubleValue], [snapshot.value[@"coords"][@"longitude"] doubleValue]);
         }];
     }];
+}
+
+// Logged-out user experience
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    NSLog(@"FB: logged out");
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate deauthToFirebase];
 }
 
 - (void)didReceiveMemoryWarning

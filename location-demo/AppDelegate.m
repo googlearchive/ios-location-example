@@ -53,6 +53,17 @@
     }
 }
 
+- (void)deauthToFirebase
+{
+    if (displayName_) {
+        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:displayName_];
+        [positionRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
+            displayName_ = nil;
+        }];
+    }
+    [self stopLocationUpdates];
+}
+
 - (void)startLocationUpdates
 {
     // Create the location manager if this object does not
@@ -82,14 +93,15 @@
     if (displayName_) {
         NSDictionary *value = @{
             @"coords": @{
-                    @"accuracy" : [NSNumber numberWithDouble:loc.horizontalAccuracy],
-                    @"latitude" : [NSNumber numberWithDouble:loc.coordinate.latitude],
-                    @"longitude" : [NSNumber numberWithDouble:loc.coordinate.longitude]
+                @"accuracy" : [NSNumber numberWithDouble:loc.horizontalAccuracy],
+                @"latitude" : [NSNumber numberWithDouble:loc.coordinate.latitude],
+                @"longitude" : [NSNumber numberWithDouble:loc.coordinate.longitude]
             },
             @"timestamp" : [NSNumber numberWithInt:[[NSNumber numberWithDouble:loc.timestamp.timeIntervalSince1970 * 1000] intValue]]
         };
         Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:displayName_];
         [positionRef setValue:value];
+        [positionRef onDisconnectRemoveValue];
     }
 }
 
