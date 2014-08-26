@@ -61,7 +61,7 @@ Follow Google's [Getting Started Guide](https://developers.google.com/maps/docum
 ##Login using Facebook
 - Use [FBLoginView](https://developers.facebook.com/docs/facebook-login/ios/v2.1)
   - Add Facebook Login to the View Controller (See [`loadFacebookView`](https://github.com/tonymeng/location-demo/blob/master/location-demo/ViewController.m#L46))
-  - Override the `application:openURL:sourceApplication:annotation:` method
+  - Override the [`application:openURL:sourceApplication:annotation:`](https://github.com/tonymeng/location-demo/blob/master/location-demo/AppDelegate.m#L21) method
 
 ##Authenticate to Firebase
 - Use the Facebook auth token 
