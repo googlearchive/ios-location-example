@@ -22,11 +22,9 @@
 		51BB973119ABDA22005E7F04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB971019ABDA22005E7F04 /* UIKit.framework */; };
 		51BB973919ABDA22005E7F04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51BB973719ABDA22005E7F04 /* InfoPlist.strings */; };
 		51BB973B19ABDA22005E7F04 /* location_demoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BB973A19ABDA22005E7F04 /* location_demoTests.m */; };
-		51BB975719ABDC2D005E7F04 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975619ABDC2D005E7F04 /* Firebase.framework */; };
 		51BB975919ABDC65005E7F04 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975819ABDC65005E7F04 /* libicucore.dylib */; };
 		51BB975B19ABDC6C005E7F04 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */; };
 		51BB975D19ABDC71005E7F04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975C19ABDC71005E7F04 /* Security.framework */; };
-		51BB975F19ABDCFF005E7F04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */; };
 		51BB976519ABDF5E005E7F04 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976419ABDF5E005E7F04 /* AVFoundation.framework */; };
 		51BB976719ABDF63005E7F04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976619ABDF63005E7F04 /* CoreData.framework */; };
 		51BB976919ABDF68005E7F04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB976819ABDF68005E7F04 /* CoreLocation.framework */; };
@@ -40,9 +38,11 @@
 		51BB977919ABDF92005E7F04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */; };
 		51BB977B19ABE101005E7F04 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977A19ABE101005E7F04 /* Accounts.framework */; };
 		51BB977D19ABE105005E7F04 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977C19ABE105005E7F04 /* Social.framework */; };
-		51BB977F19ABE784005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */; };
 		51BB978B19ABE9E6005E7F04 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */; };
 		51BB978D19ABE9F1005E7F04 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */; };
+		51BB979119BFAEDD005E7F04 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB979019BFAEDD005E7F04 /* Firebase.framework */; };
+		51BB979319BFAEF4005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB979219BFAEF4005E7F04 /* FirebaseSimpleLogin.framework */; };
+		51BB979519BFAF19005E7F04 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB979419BFAF19005E7F04 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,11 +76,9 @@
 		51BB973619ABDA22005E7F04 /* location-demoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "location-demoTests-Info.plist"; sourceTree = "<group>"; };
 		51BB973819ABDA22005E7F04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		51BB973A19ABDA22005E7F04 /* location_demoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = location_demoTests.m; sourceTree = "<group>"; };
-		51BB975619ABDC2D005E7F04 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = ../../Downloads/Firebase.framework; sourceTree = "<group>"; };
 		51BB975819ABDC65005E7F04 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		51BB975C19ABDC71005E7F04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		51BB976419ABDF5E005E7F04 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		51BB976619ABDF63005E7F04 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		51BB976819ABDF68005E7F04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -94,9 +92,11 @@
 		51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		51BB977A19ABE101005E7F04 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		51BB977C19ABE105005E7F04 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseSimpleLogin.framework; path = ../../Downloads/FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
 		51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		51BB979019BFAEDD005E7F04 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		51BB979219BFAEF4005E7F04 /* FirebaseSimpleLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseSimpleLogin.framework; sourceTree = "<group>"; };
+		51BB979419BFAF19005E7F04 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,16 +116,16 @@
 				51BB976B19ABDF6D005E7F04 /* CoreText.framework in Frameworks */,
 				51BB976919ABDF68005E7F04 /* CoreLocation.framework in Frameworks */,
 				51BB976719ABDF63005E7F04 /* CoreData.framework in Frameworks */,
+				51BB979519BFAF19005E7F04 /* FacebookSDK.framework in Frameworks */,
+				51BB979119BFAEDD005E7F04 /* Firebase.framework in Frameworks */,
 				51BB976519ABDF5E005E7F04 /* AVFoundation.framework in Frameworks */,
-				51BB977F19ABE784005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */,
 				51BB975D19ABDC71005E7F04 /* Security.framework in Frameworks */,
 				51BB975B19ABDC6C005E7F04 /* CFNetwork.framework in Frameworks */,
 				51BB975919ABDC65005E7F04 /* libicucore.dylib in Frameworks */,
 				51BB970F19ABDA22005E7F04 /* CoreGraphics.framework in Frameworks */,
 				51BB971119ABDA22005E7F04 /* UIKit.framework in Frameworks */,
-				51BB975F19ABDCFF005E7F04 /* FacebookSDK.framework in Frameworks */,
+				51BB979319BFAEF4005E7F04 /* FirebaseSimpleLogin.framework in Frameworks */,
 				51BB970D19ABDA22005E7F04 /* Foundation.framework in Frameworks */,
-				51BB975719ABDC2D005E7F04 /* Firebase.framework in Frameworks */,
 				51BB978B19ABE9E6005E7F04 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,9 +165,11 @@
 		51BB970B19ABDA22005E7F04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BB979419BFAF19005E7F04 /* FacebookSDK.framework */,
+				51BB979219BFAEF4005E7F04 /* FirebaseSimpleLogin.framework */,
+				51BB979019BFAEDD005E7F04 /* Firebase.framework */,
 				51BB978C19ABE9F1005E7F04 /* GoogleMaps.bundle */,
 				51BB978A19ABE9E6005E7F04 /* GoogleMaps.framework */,
-				51BB977E19ABE784005E7F04 /* FirebaseSimpleLogin.framework */,
 				51BB977C19ABE105005E7F04 /* Social.framework */,
 				51BB977A19ABE101005E7F04 /* Accounts.framework */,
 				51BB977819ABDF92005E7F04 /* SystemConfiguration.framework */,
@@ -181,11 +183,9 @@
 				51BB976819ABDF68005E7F04 /* CoreLocation.framework */,
 				51BB976619ABDF63005E7F04 /* CoreData.framework */,
 				51BB976419ABDF5E005E7F04 /* AVFoundation.framework */,
-				51BB975E19ABDCFF005E7F04 /* FacebookSDK.framework */,
 				51BB975C19ABDC71005E7F04 /* Security.framework */,
 				51BB975A19ABDC6C005E7F04 /* CFNetwork.framework */,
 				51BB975819ABDC65005E7F04 /* libicucore.dylib */,
-				51BB975619ABDC2D005E7F04 /* Firebase.framework */,
 				51BB970C19ABDA22005E7F04 /* Foundation.framework */,
 				51BB970E19ABDA22005E7F04 /* CoreGraphics.framework */,
 				51BB971019ABDA22005E7F04 /* UIKit.framework */,

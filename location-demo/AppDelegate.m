@@ -13,10 +13,7 @@
 #import <Firebase/Firebase.h>
 #import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
-@implementation AppDelegate {
-    CLLocationManager *locationManager_;
-    NSString *displayName_;
-}
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -43,8 +40,8 @@
                 NSLog(@"Error on login: %@", error);
                 [self stopLocationUpdates];
             } else {
-                displayName_ = user.thirdPartyUserData[@"displayName"];
-                NSLog(@"Logged In: %@", displayName_);
+                self.displayName_ = user.thirdPartyUserData[@"displayName"];
+                NSLog(@"Logged In: %@", self.displayName_);
                 [self startLocationUpdates];
             }
         }];
@@ -55,10 +52,10 @@
 
 - (void)deauthToFirebase
 {
-    if (displayName_) {
-        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:displayName_];
+    if (self.displayName_) {
+        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:self.displayName_];
         [positionRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
-            displayName_ = nil;
+            self.displayName_ = nil;
         }];
     }
     [self stopLocationUpdates];
@@ -68,29 +65,29 @@
 {
     // Create the location manager if this object does not
     // already have one.
-    if (!locationManager_) {
-        locationManager_ = [[CLLocationManager alloc] init];
+    if (!self.locationManager_) {
+        self.locationManager_ = [[CLLocationManager alloc] init];
     }
     
-    locationManager_.delegate = self;
-    locationManager_.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager_.delegate = self;
+    self.locationManager_.desiredAccuracy = kCLLocationAccuracyBest;
     
     // Set a movement threshold for new events.
-    locationManager_.distanceFilter = 5; // meters
+    self.locationManager_.distanceFilter = 5; // meters
     
-    [locationManager_ startUpdatingLocation];
+    [self.locationManager_ startUpdatingLocation];
 }
 
 - (void)stopLocationUpdates
 {
-    if (locationManager_) {
-        [locationManager_ stopUpdatingLocation];
+    if (self.locationManager_) {
+        [self.locationManager_ stopUpdatingLocation];
     }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *loc = locations[0];
-    if (displayName_) {
+    if (self.displayName_) {
         NSDictionary *value = @{
             @"coords": @{
                 @"accuracy" : [NSNumber numberWithDouble:loc.horizontalAccuracy],
@@ -99,7 +96,7 @@
             },
             @"timestamp" : [NSNumber numberWithInt:[[NSNumber numberWithDouble:loc.timestamp.timeIntervalSince1970 * 1000] intValue]]
         };
-        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:displayName_];
+        Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:self.displayName_];
         [positionRef setValue:value];
         [positionRef onDisconnectRemoveValue];
     }

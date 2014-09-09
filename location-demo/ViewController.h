@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface ViewController : UIViewController <FBLoginViewDelegate>
+
+@property (strong, nonatomic) GMSMapView *mapView_;
+@property (strong, nonatomic) NSMapTable *usersToMarkers_;
 
 @end

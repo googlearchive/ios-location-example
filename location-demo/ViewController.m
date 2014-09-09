@@ -11,16 +11,8 @@
 
 #import <Firebase/Firebase.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <GoogleMaps/GoogleMaps.h>
 
-@interface ViewController ()
-
-@end
-
-@implementation ViewController {
-    GMSMapView *mapView_;
-    NSMapTable *usersToMarkers_;
-}
+@implementation ViewController 
 
 - (void)viewDidLoad
 {
@@ -35,33 +27,39 @@
 - (void)loadMapsView {
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.32607142
-                                                            longitude:-122.01973718
-                                                                 zoom:14];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.7833
+                                                            longitude:-122.4167
+                                                                 zoom:8];
+    self.mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    self.mapView_.myLocationEnabled = YES;
+    self.view = self.mapView_;
 }
 
 - (void)loadFacebookView {
 	// Do any additional setup after loading the view, typically from a nib.
     FBLoginView *loginView = [[FBLoginView alloc] init];
+    // position the login button
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    // create a button that's the width of the screen (with 4 padding) and has a height of 50
+    // move the button to the bottom of the screen (screen height - button height (50))
+    loginView.frame = CGRectMake(4, screenRect.size.height-50, screenRect.size.width-(4*2), 50);
+    // set the view controller as the delegate
     loginView.delegate = self;
     [self.view addSubview:loginView];
 }
 
 - (void)listenForLocations {
-    usersToMarkers_ = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
+    self.usersToMarkers_ = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"];
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *s2) {
         // a new person connected, start listening for his position
         [[ref childByAppendingPath:s2.name] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            GMSMarker *marker = [usersToMarkers_ objectForKey:snapshot.name];
+            GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
             if (!marker) {
                 marker = [[GMSMarker alloc] init];
                 marker.title = snapshot.name;
-                marker.map = mapView_;
-                [usersToMarkers_ setObject:marker forKey:snapshot.name];
+                marker.map = self.mapView_;
+                [self.usersToMarkers_ setObject:marker forKey:snapshot.name];
             }
             marker.position = CLLocationCoordinate2DMake([snapshot.value[@"coords"][@"latitude"] doubleValue], [snapshot.value[@"coords"][@"longitude"] doubleValue]);
         }];
