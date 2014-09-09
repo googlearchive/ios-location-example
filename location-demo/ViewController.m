@@ -54,14 +54,24 @@
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *s2) {
         // a new person connected, start listening for his position
         [[ref childByAppendingPath:s2.name] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
-            if (!marker) {
-                marker = [[GMSMarker alloc] init];
-                marker.title = snapshot.name;
-                marker.map = self.mapView_;
-                [self.usersToMarkers_ setObject:marker forKey:snapshot.name];
+            if (snapshot.value != [NSNull null]) {
+                // location updated
+                GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
+                if (!marker) {
+                    marker = [[GMSMarker alloc] init];
+                    marker.title = snapshot.name;
+                    marker.map = self.mapView_;
+                    [self.usersToMarkers_ setObject:marker forKey:snapshot.name];
+                }
+                marker.position = CLLocationCoordinate2DMake([snapshot.value[@"coords"][@"latitude"] doubleValue], [snapshot.value[@"coords"][@"longitude"] doubleValue]);
+            } else {
+                // user was removed
+                GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
+                if (marker) {
+                    marker.map = nil;
+                    [self.usersToMarkers_ removeObjectForKey:snapshot.name];
+                }
             }
-            marker.position = CLLocationCoordinate2DMake([snapshot.value[@"coords"][@"latitude"] doubleValue], [snapshot.value[@"coords"][@"longitude"] doubleValue]);
         }];
     }];
 }

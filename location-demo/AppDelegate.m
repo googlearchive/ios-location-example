@@ -39,10 +39,12 @@
             if (error) {
                 NSLog(@"Error on login: %@", error);
                 [self stopLocationUpdates];
-            } else {
+            } else if (user) {
                 self.displayName_ = user.thirdPartyUserData[@"displayName"];
                 NSLog(@"Logged In: %@", self.displayName_);
                 [self startLocationUpdates];
+            } else {
+                NSLog(@"Logged Out");
             }
         }];
     } else {
@@ -82,6 +84,7 @@
 {
     if (self.locationManager_) {
         [self.locationManager_ stopUpdatingLocation];
+        self.locationManager_ = nil;
     }
 }
 
