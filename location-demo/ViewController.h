@@ -15,4 +15,6 @@
 @property (strong, nonatomic) GMSMapView *mapView_;
 @property (strong, nonatomic) NSMapTable *usersToMarkers_;
 
+- (void)updateCameraWithLocation:(CLLocation*)location;
+
 @end

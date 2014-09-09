@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -18,7 +19,8 @@
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+         annotation:(id)annotation
+{
     // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
     if (wasHandled) {
@@ -28,6 +30,7 @@
     return wasHandled;
 }
 
+// notify firebase that user has logged in
 - (void)authToFirebase
 {
     NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
@@ -52,6 +55,7 @@
     }
 }
 
+// notify firebase that user has logged out
 - (void)deauthToFirebase
 {
     if (self.displayName_) {
@@ -63,6 +67,7 @@
     [self stopLocationUpdates];
 }
 
+// start updating location
 - (void)startLocationUpdates
 {
     // Create the location manager if this object does not
@@ -77,9 +82,11 @@
     // Set a movement threshold for new events.
     self.locationManager_.distanceFilter = 5; // meters
     
+    self.hasOrientated_ = false;
     [self.locationManager_ startUpdatingLocation];
 }
 
+// stop updating location
 - (void)stopLocationUpdates
 {
     if (self.locationManager_) {
@@ -88,9 +95,17 @@
     }
 }
 
+// this function executes once per location update
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *loc = locations[0];
+    if (!self.hasOrientated_) {
+        // set map to the user's location on initial login
+        ViewController* controller = (ViewController*) self.window.rootViewController;
+        [controller updateCameraWithLocation:loc];
+        self.hasOrientated_ = true;
+    }
     if (self.displayName_) {
+        // if the user has logged in, update firebase with the new location
         NSDictionary *value = @{
             @"coords": @{
                 @"accuracy" : [NSNumber numberWithDouble:loc.horizontalAccuracy],
@@ -101,6 +116,7 @@
         };
         Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:self.displayName_];
         [positionRef setValue:value];
+        // if the user disconnects, remove his data from firebase
         [positionRef onDisconnectRemoveValue];
     }
 }

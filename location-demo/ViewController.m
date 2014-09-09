@@ -24,9 +24,10 @@
     [self listenForLocations];
 }
 
-- (void)loadMapsView {
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
+// set google maps as the view
+- (void)loadMapsView
+{
+    // initialize the map to san francisco
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.7833
                                                             longitude:-122.4167
                                                                  zoom:8];
@@ -35,8 +36,9 @@
     self.view = self.mapView_;
 }
 
-- (void)loadFacebookView {
-	// Do any additional setup after loading the view, typically from a nib.
+// load the facebook login button
+- (void)loadFacebookView
+{
     FBLoginView *loginView = [[FBLoginView alloc] init];
     // position the login button
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -48,14 +50,19 @@
     [self.view addSubview:loginView];
 }
 
-- (void)listenForLocations {
+// setup firebase listerners to handle other users' locations
+- (void)listenForLocations
+{
+    // house all the markers in a map
     self.usersToMarkers_ = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory valueOptions:NSMapTableWeakMemory];
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"];
+    // listen for new users
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *s2) {
-        // a new person connected, start listening for his position
+        // listen for updates for each user
         [[ref childByAppendingPath:s2.name] observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            // check to see if user was updated or removed
             if (snapshot.value != [NSNull null]) {
-                // location updated
+                // location updated, create/move the marker
                 GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
                 if (!marker) {
                     marker = [[GMSMarker alloc] init];
@@ -65,7 +72,7 @@
                 }
                 marker.position = CLLocationCoordinate2DMake([snapshot.value[@"coords"][@"latitude"] doubleValue], [snapshot.value[@"coords"][@"longitude"] doubleValue]);
             } else {
-                // user was removed
+                // user was removed, remove the marker
                 GMSMarker *marker = [self.usersToMarkers_ objectForKey:snapshot.name];
                 if (marker) {
                     marker.map = nil;
@@ -76,8 +83,18 @@
     }];
 }
 
+// change where the camera is on the map
+- (void)updateCameraWithLocation:(CLLocation*)location
+{
+    NSLog(@"Updating camera");
+    GMSCameraPosition *oldPosition = [self.mapView_ camera];
+    GMSCameraPosition *position = [[GMSCameraPosition alloc] initWithTarget:[location coordinate] zoom:[oldPosition zoom] bearing:[location course] viewingAngle:[oldPosition viewingAngle]];
+    [self.mapView_ setCamera:position];
+}
+
 // Logged-out user experience
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
+{
     NSLog(@"FB: logged out");
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate deauthToFirebase];

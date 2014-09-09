@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CLLocationManager *locationManager_;
 @property (strong, nonatomic) NSString *displayName_;
+@property Boolean hasOrientated_;
 
 - (void)authToFirebase;
 - (void)deauthToFirebase;
