@@ -1,4 +1,4 @@
-location-demo
+Firebase iOS Location Demo
 =============
 This is an example iOS app that will show you how to integrate the Firebase iOS SDK, Firebase Simple Login iOS SDK, Google Maps iOS SDK, and the Facebook iOS SDK.
 
