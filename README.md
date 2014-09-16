@@ -2,7 +2,7 @@ Firebase iOS Location Demo
 =============
 This is an example iOS app that will show you how to integrate the Firebase iOS SDK, Firebase Simple Login iOS SDK, Google Maps iOS SDK, and the Facebook iOS SDK.
 
-![Example](https://s3.amazonaws.com/uploads.hipchat.com/60341/715816/4uSm8E7qQVgmcFN/upload.png)
+![Example](ios-location.gif)
 #Setup
 ##Installing Frameworks
 1. [Firebase SDK](https://cdn.firebase.com/ObjC/Firebase.framework-1.1.12.zip)
@@ -56,7 +56,7 @@ Follow Google's [Getting Started Guide](https://developers.google.com/maps/docum
 
 ##Setup Firebase Simple Login with Facebook
 1. Enable Facebook Simple login in the Simple Login tab on your Firebase Dashboard
-  1. Add your Facebook App ID and Facebook App Secret 
+  1. Add your Facebook App ID and Facebook App Secret
 2. Add Firebase as a Valid OAuth Redirect URI by adding the URL: `https://auth.firebase.com/auth/facebook/callback` in the Facebook Advanced tab under Settings in Facebook
 
 #Code
@@ -66,7 +66,7 @@ Follow Google's [Getting Started Guide](https://developers.google.com/maps/docum
   - Override the [`application:openURL:sourceApplication:annotation:`](https://github.com/tonymeng/location-demo/blob/master/location-demo/AppDelegate.m#L21) method
 
 ##Authenticate to Firebase
-- Use the Facebook auth token 
+- Use the Facebook auth token
   - <pre>NSString *fbAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];</pre>
 - Create a `FirebaseSimpleLogin` object
 - Call [`loginWithFacebookWithAccessToken:withCompletetionBlock:`](https://github.com/tonymeng/location-demo/blob/master/location-demo/AppDelegate.m#L41)
