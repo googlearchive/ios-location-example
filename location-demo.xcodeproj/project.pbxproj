@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		511CC70519DDBF1C00449EDC /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511CC70419DDBF1C00449EDC /* Firebase.framework */; };
+		511CC70919DDCA1800449EDC /* location-demo-Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51BB971419ABDA22005E7F04 /* location-demo-Info.plist */; };
 		51BB970D19ABDA22005E7F04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB970C19ABDA22005E7F04 /* Foundation.framework */; };
 		51BB970F19ABDA22005E7F04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB970E19ABDA22005E7F04 /* CoreGraphics.framework */; };
 		51BB971119ABDA22005E7F04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB971019ABDA22005E7F04 /* UIKit.framework */; };
@@ -52,6 +53,19 @@
 			remoteInfo = "location-demo";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		511CC70719DDC9DF00449EDC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				511CC70919DDCA1800449EDC /* location-demo-Info.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		511CC70419DDBF1C00449EDC /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
@@ -240,6 +254,7 @@
 				51BB970519ABDA22005E7F04 /* Sources */,
 				51BB970619ABDA22005E7F04 /* Frameworks */,
 				51BB970719ABDA22005E7F04 /* Resources */,
+				511CC70719DDC9DF00449EDC /* CopyFiles */,
 			);
 			buildRules = (
 			);

@@ -25,14 +25,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1464772113802322</string>
+				<string>fb&lt;YOUR_FACEBOOK_APP_ID&gt;</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>FacebookAppID</key>
-	<string>1464772113802322</string>
+	<string>&lt;YOUR_FACEBOOK_APP_ID&gt;</string>
 	<key>FacebookDisplayName</key>
 	<string>Location Demo</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -43,6 +43,8 @@
 	<string>Location Services will be used to share your location while using the application.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location Services will be used to share your location while using the application.</string>
+	<key>GMSAPIKey</key>
+	<string>&lt;YOUR_GOOGLE_APP_API_KEY&gt;</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>

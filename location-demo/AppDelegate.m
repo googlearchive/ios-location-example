@@ -115,7 +115,6 @@
         [controller updateCameraWithLocation:loc];
         self.hasOrientated_ = true;
     }
-    NSLog(@"Location: %@", loc);
     if (self.displayName_) {
         // if the user has logged in, update firebase with the new location
         NSDictionary *value = @{
@@ -136,7 +135,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [GMSServices provideAPIKey:@"AIzaSyBPKS6jBXdI4kCRBWxZjx9EMJrF20RDg_I"];
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"location-demo-Info" ofType:@"plist"];
+    NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    [GMSServices provideAPIKey:[plist objectForKey:@"GMSAPIKey"]];
     [self authToFirebase];
     return YES;
 }
