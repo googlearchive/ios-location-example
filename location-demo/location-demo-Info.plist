@@ -39,6 +39,10 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location Services will be used to share your location while using the application.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location Services will be used to share your location while using the application.</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>

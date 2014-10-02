@@ -12,7 +12,6 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Firebase/Firebase.h>
-#import <FirebaseSimpleLogin/FirebaseSimpleLogin.h>
 
 @implementation AppDelegate
 
@@ -37,17 +36,15 @@
     // if we have an access token, authenticate to firebase
     if (fbAccessToken) {
         Firebase *ref = [[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"];
-        FirebaseSimpleLogin *authClient = [[FirebaseSimpleLogin alloc] initWithRef:ref];
-        [authClient loginWithFacebookWithAccessToken:fbAccessToken withCompletionBlock:^(NSError *error, FAUser *user) {
+        [ref authWithOAuthProvider:@"facebook" token:fbAccessToken withCompletionBlock:^(NSError *error, FAuthData *authData) {
             if (error) {
-                NSLog(@"Error on login: %@", error);
-                [self stopLocationUpdates];
-            } else if (user) {
-                self.displayName_ = user.thirdPartyUserData[@"displayName"];
+                NSLog(@"Error on login %@", error);
+            } else if (authData) {
+                self.displayName_ = authData.providerData[@"displayName"];
                 NSLog(@"Logged In: %@", self.displayName_);
                 [self startLocationUpdates];
             } else {
-                NSLog(@"Logged Out");
+                NSLog(@"Logged out");
             }
         }];
     } else {
@@ -62,6 +59,7 @@
         Firebase *positionRef = [[[Firebase alloc] initWithUrl:@"https://location-demo.firebaseio.com"] childByAppendingPath:self.displayName_];
         [positionRef removeValueWithCompletionBlock:^(NSError *error, Firebase *ref) {
             self.displayName_ = nil;
+            [positionRef unauth];
         }];
     }
     [self stopLocationUpdates];
@@ -83,7 +81,20 @@
     self.locationManager_.distanceFilter = 5; // meters
     
     self.hasOrientated_ = false;
+    
+    [self.locationManager_ requestWhenInUseAuthorization];
     [self.locationManager_ startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [self.locationManager_ startUpdatingLocation];
+    } else if (status == kCLAuthorizationStatusAuthorized) {
+        // iOS 7 will redundantly call this line.
+        [self.locationManager_ startUpdatingLocation];
+    } else if (status > kCLAuthorizationStatusNotDetermined) {
+        NSLog(@"Could not fetch correct authorization status.");
+    }
 }
 
 // stop updating location
@@ -104,6 +115,7 @@
         [controller updateCameraWithLocation:loc];
         self.hasOrientated_ = true;
     }
+    NSLog(@"Location: %@", loc);
     if (self.displayName_) {
         // if the user has logged in, update firebase with the new location
         NSDictionary *value = @{
@@ -124,7 +136,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [GMSServices provideAPIKey:@"AIzaSyBx8n37AY9pJw9AV6aOkrSKN84V22LrcUc"];
+    [GMSServices provideAPIKey:@"AIzaSyBPKS6jBXdI4kCRBWxZjx9EMJrF20RDg_I"];
     [self authToFirebase];
     return YES;
 }
