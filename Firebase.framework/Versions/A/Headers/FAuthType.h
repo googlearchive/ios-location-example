@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, FAuthenticationError) {
     FAuthenticationErrorEmailTaken = -9,
 
     // User Errors (Facebook / Twitter / Github / Google)
-    FAuthenticationErrorUserDenied = -10,
+    FAuthenticationErrorDeniedByUser = -10,
     FAuthenticationErrorInvalidCredentials = -11,
     FAuthenticationErrorInvalidArguments = -12,
     FAuthenticationErrorProviderError = -13,
