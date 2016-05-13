@@ -1,3 +1,8 @@
+# This is a legacy Firebase example (for SDK 2.x.x). You probably want to use one of the up-to-date examples at https://firebase.google.com/docs/samples
+
+---
+
+
 Firebase iOS Location Demo
 =============
 This is an example iOS app that will show you how to integrate the Firebase iOS SDK, Google Maps iOS SDK, and the Facebook iOS SDK.
